@@ -21,9 +21,13 @@ git clone https://github.com/Filo6699/chat-api
 pip install -r requirements.txt
 ```
 
-3. Configure `.env` (there is `.env.example`)
+3. Setup the database.
 
-4. Run the API
+- Create a new database in your postgresql. That's all.
+
+4. Configure `.env` (there is `.env.example`)
+
+5. Run the API
 
 ```bash
 uvicorn api.main:app --host x.x.x.x --port 8000
