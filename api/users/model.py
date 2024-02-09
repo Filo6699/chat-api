@@ -33,5 +33,11 @@ class UserPost(UserBase):
     pass
 
 
+class UserPostResponce(UserBase):
+    id: UUID
+    token: str
+    admin: bool
+
+
 class UserResponse(UserBase):
     admin: bool
