@@ -46,6 +46,7 @@ class UserService:
         return {
             "id": new_user.id,
             "username": new_user.username,
+            "admin": new_user.admin,
             "token": generate_token(new_user.id),
         }
 
