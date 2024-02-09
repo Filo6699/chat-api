@@ -26,7 +26,7 @@ class Chat(Base):
 
 
 class ChatBase(BaseModel):
-    name: constr(max_length=32)
+    name: constr(min_length=2, max_length=32)
 
 
 class ChatPost(ChatBase):

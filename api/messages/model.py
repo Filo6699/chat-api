@@ -32,7 +32,7 @@ class Message(Base):
 
 
 class MessageBase(BaseModel):
-    content: constr(max_length=1024)
+    content: constr(min_length=1, max_length=1024)
 
 
 class MessagePost(MessageBase):
