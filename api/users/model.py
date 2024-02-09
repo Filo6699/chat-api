@@ -27,11 +27,11 @@ class User(Base):
 
 
 class UserBase(BaseModel):
-    username: constr(min_length=2, max_length=32)
+    username: str
 
 
 class UserPost(UserBase):
-    pass
+    username: constr(min_length=2, max_length=32)
 
 
 class UserPostResponce(UserBase):
