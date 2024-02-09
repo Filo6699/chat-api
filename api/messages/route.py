@@ -66,7 +66,7 @@ async def create_message(
 ):
     try:
         message = await MessageService.create_message(
-            chat_id, user.id, message, session
+            chat_id, user, message, session
         )
         return message
     except Exception as error:

@@ -6,6 +6,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from pydantic.types import UUID
 
 from .model import Message, MessagePost
+from api.users.model import User
 from api.exceptions import PermissionError
 
 
@@ -36,13 +37,14 @@ class MessageService:
     @staticmethod
     async def create_message(
         chat_id: UUID,
-        author_id: UUID,
+        user: User,
         message: MessagePost,
         session: AsyncSession,
     ) -> Message:
         new_message = Message(
             chat_id=chat_id,
-            author_id=author_id,
+            author_id=user.id,
+            author_username=user.username,
             content=message.content,
         )
         session.add(new_message)

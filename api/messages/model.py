@@ -22,6 +22,7 @@ class Message(Base):
     )
     chat_id = Column(UUID, ForeignKey("chats.id"), index=True)
     author_id = Column(UUID, ForeignKey("users.id"), index=True)
+    author_username = Column(String)
 
     chat = relationship("Chat", back_populates="messages")
     author = relationship("User", back_populates="messages")
@@ -42,4 +43,5 @@ class MessageResponse(MessageBase):
     id: PUUID
     chat_id: PUUID
     author_id: PUUID
+    author_username: str
     created_date: datetime

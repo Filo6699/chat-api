@@ -22,7 +22,7 @@ class Chat(Base):
 
     messages = relationship("Message", back_populates="chat", cascade="all, delete")
 
-    name = Column(String)
+    name = Column(String, unique=True)
 
 
 class ChatBase(BaseModel):
