@@ -4,7 +4,7 @@ from datetime import datetime
 from sqlalchemy import Column, String, ForeignKey, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
-from pydantic import BaseModel
+from pydantic import BaseModel, constr
 from pydantic.types import UUID as PUUID
 
 from api.database import Base
@@ -32,7 +32,7 @@ class Message(Base):
 
 
 class MessageBase(BaseModel):
-    content: str
+    content: constr(max_length=1024)
 
 
 class MessagePost(MessageBase):

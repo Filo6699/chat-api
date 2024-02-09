@@ -3,7 +3,7 @@ import uuid
 from sqlalchemy import Column, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
-from pydantic import BaseModel
+from pydantic import BaseModel, constr
 from pydantic.types import UUID as PUUID
 
 from api.database import Base
@@ -26,7 +26,7 @@ class Chat(Base):
 
 
 class ChatBase(BaseModel):
-    name: str
+    name: constr(max_length=32)
 
 
 class ChatPost(ChatBase):

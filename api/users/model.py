@@ -3,7 +3,7 @@ import uuid
 from sqlalchemy import Column, String, Boolean
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
-from pydantic import BaseModel
+from pydantic import BaseModel, constr
 from pydantic.types import UUID as PUUID
 
 from api.database import Base
@@ -27,7 +27,7 @@ class User(Base):
 
 
 class UserBase(BaseModel):
-    username: str
+    username: constr(max_length=32)
 
 
 class UserPost(UserBase):
