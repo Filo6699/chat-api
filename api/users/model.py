@@ -1,12 +1,9 @@
 import uuid
-from typing import Optional
-from datetime import datetime
 
-from sqlalchemy import Column, String, ForeignKey, Time, Boolean
+from sqlalchemy import Column, String, Boolean
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
-from pydantic import BaseModel, validator
-from pydantic.types import UUID as PUUID
+from pydantic import BaseModel
 
 from api.database import Base
 

@@ -1,12 +1,9 @@
 from uuid import UUID
-from typing import Optional
 
 from jose import JWTError, jwt
-from pydantic import BaseModel
 from fastapi import Header, Depends, HTTPException
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.exc import DBAPIError
 
 from api.config import ENCRYPTION_ALGORITHM, JWD_ENCRYPTION_KEY
 from api.database import get_session

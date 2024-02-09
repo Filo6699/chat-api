@@ -1,5 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, Header
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic.types import UUID
 
