@@ -41,4 +41,5 @@ class UserPostResponce(UserBase):
 
 
 class UserResponse(UserBase):
+    id: PUUID
     admin: bool
