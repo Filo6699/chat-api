@@ -4,7 +4,7 @@ from sqlalchemy import Column, String, Boolean
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from pydantic import BaseModel
-from pydantic import UUID as PUUID
+from pydantic.types import UUID as PUUID
 
 from api.database import Base
 
