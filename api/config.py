@@ -1,0 +1,5 @@
+from decouple import config as env
+
+
+JWD_ENCRYPTION_KEY = env("JWD_ENCRYPTION_KEY")
+ENCRYPTION_ALGORITHM = env("ENCRYPTION_ALGORITHM")
