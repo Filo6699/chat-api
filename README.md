@@ -37,4 +37,3 @@ uvicorn api.main:app --host x.x.x.x --port 8000
 * use `localhost` for local access
 
 Docs: https://chat.femboy-filo.com/docs
-(not available at the moment)
