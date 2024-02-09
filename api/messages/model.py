@@ -30,5 +30,16 @@ class Message(Base):
     created_date = Column(DateTime, default=datetime.utcnow)
 
 
-class MessagePost(BaseModel):
+class MessageBase(BaseModel):
     content: str
+
+
+class MessagePost(MessageBase):
+    pass
+
+
+class MessageResponse(MessageBase):
+    id: PUUID
+    chat_id: PUUID
+    author_id: PUUID
+    created_date: datetime

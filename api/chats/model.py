@@ -25,5 +25,13 @@ class Chat(Base):
     name = Column(String)
 
 
-class ChatPost(BaseModel):
+class ChatBase(BaseModel):
     name: str
+
+
+class ChatPost(ChatBase):
+    pass
+
+
+class ChatResponse(ChatBase):
+    id: PUUID

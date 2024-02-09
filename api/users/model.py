@@ -25,5 +25,13 @@ class User(Base):
     messages = relationship("Message", back_populates="author", cascade="all, delete")
 
 
-class UserPost(BaseModel):
+class UserBase(BaseModel):
     username: str
+
+
+class UserPost(UserBase):
+    pass
+
+
+class UserResponse(UserBase):
+    admin: bool

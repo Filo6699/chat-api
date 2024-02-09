@@ -1,16 +1,22 @@
-from fastapi import APIRouter, Depends, HTTPException
+from typing import List
+
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic.types import UUID
 
 from .service import UserService
-from .model import User, UserPost
+from .model import User, UserPost, UserResponse
 from api.utils import get_current_user
 from api.database import get_session
 
 router = APIRouter()
 
 
-@router.get("/users")
+@router.get(
+    "/users",
+    response_model=List[UserResponse],
+    tags=["users"],
+)
 async def get_users(
     session: AsyncSession = Depends(get_session),
 ):
@@ -24,7 +30,11 @@ async def get_users(
         )
 
 
-@router.get("/users/{user_id}")
+@router.get(
+    "/users/{user_id}",
+    response_model=UserResponse,
+    tags=["users"],
+)
 async def get_user(
     user_id: UUID,
     session: AsyncSession = Depends(get_session),
@@ -39,7 +49,12 @@ async def get_user(
         )
 
 
-@router.post("/users")
+@router.post(
+    "/users",
+    response_model=UserResponse,
+    status_code=status.HTTP_201_CREATED,
+    tags=["users"],
+)
 async def create_user(
     user: UserPost,
     session: AsyncSession = Depends(get_session),
@@ -54,7 +69,11 @@ async def create_user(
         )
 
 
-@router.delete("/users/{user_id}")
+@router.delete(
+    "/users/{user_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    tags=["users"],
+)
 async def delete_message(
     user_id: UUID,
     user: User = Depends(get_current_user),
