@@ -1,15 +1,12 @@
 from typing import List
 
 from sqlalchemy import select
-from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm.exc import NoResultFound
 from pydantic.types import UUID
 
 from .model import Chat, ChatPost
 from api.users.model import User
-from api.database import get_session
-from api.utils import convert_to_UUID
 from api.exceptions import PermissionError
 
 

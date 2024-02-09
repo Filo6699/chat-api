@@ -1,10 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException, Header
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic.types import UUID
 
 from .service import MessageService
-from .model import Message, MessagePost
+from .model import MessagePost
 from api.utils import get_current_user
 from api.database import get_session
 from api.users.model import User
