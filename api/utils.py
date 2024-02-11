@@ -4,6 +4,7 @@ from jose import JWTError, jwt
 from fastapi import Header, Depends, HTTPException
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+from bcrypt import gensalt, hashpw
 
 from api.config import ENCRYPTION_ALGORITHM, JWD_ENCRYPTION_KEY
 from api.database import get_session
@@ -50,3 +51,8 @@ async def get_current_user(
     if user is None:
         raise credentials_exception
     return user
+
+
+def hash_password(password):
+    salt = gensalt()
+    return hashpw(password.encode("utf-8"), salt)

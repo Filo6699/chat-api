@@ -65,9 +65,7 @@ async def create_message(
     session: AsyncSession = Depends(get_session),
 ):
     try:
-        message = await MessageService.create_message(
-            chat_id, user, message, session
-        )
+        message = await MessageService.create_message(chat_id, user, message, session)
         return message
     except Exception as error:
         raise HTTPException(

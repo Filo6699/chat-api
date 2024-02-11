@@ -4,9 +4,10 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm.exc import NoResultFound
 from pydantic.types import UUID
+from bcrypt import hashpw
 
 from .model import User, UserPost
-from api.utils import generate_token
+from api.utils import generate_token, hash_password
 from api.exceptions import PermissionError
 
 
@@ -28,7 +29,7 @@ class UserService:
         )
         user = (await session.execute(query)).scalars().first()
         if not user:
-            raise NoResultFound("user not found")
+            raise NoResultFound("User not found.")
         return user
 
     @staticmethod
@@ -36,9 +37,11 @@ class UserService:
         user: UserPost,
         session: AsyncSession,
     ) -> User:
+        password_hash = hash_password(user.password)
         new_user = User(
             username=user.username,
-            admin=False,
+            password_hash=password_hash,
+            admin=True,
         )
         session.add(new_user)
         await session.commit()

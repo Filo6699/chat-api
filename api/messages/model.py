@@ -1,10 +1,10 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import Column, String, ForeignKey, DateTime
+from sqlalchemy import Column, String, ForeignKey, DateTime, Integer
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
-from pydantic import BaseModel, constr
+from pydantic import BaseModel, Field
 from pydantic.types import UUID as PUUID
 
 from api.database import Base
@@ -14,11 +14,10 @@ class Message(Base):
     __tablename__ = "messages"
 
     id = Column(
-        UUID(as_uuid=True),
+        Integer,
+        index=True,
         primary_key=True,
-        default=uuid.uuid4,
-        unique=True,
-        nullable=False,
+        autoincrement=True,
     )
     chat_id = Column(UUID, ForeignKey("chats.id"), index=True)
     author_id = Column(UUID, ForeignKey("users.id"), index=True)
@@ -32,7 +31,10 @@ class Message(Base):
 
 
 class MessageBase(BaseModel):
-    content: constr(min_length=1, max_length=1024)
+    content: str = Field(
+        min_length=1,
+        max_length=1024,
+    )
 
 
 class MessagePost(MessageBase):
@@ -40,7 +42,7 @@ class MessagePost(MessageBase):
 
 
 class MessageResponse(MessageBase):
-    id: PUUID
+    id: int
     chat_id: PUUID
     author_id: PUUID
     author_username: str

@@ -13,3 +13,6 @@ JWD_ENCRYPTION_KEY = env("JWD_ENCRYPTION_KEY")
 ENCRYPTION_ALGORITHM = env("ENCRYPTION_ALGORITHM")
 
 API_PREFIX = "/api/v1"
+
+username_regex = r'^[\u0020-\u007E]*$'
+password_regex = r'^[\u0020-\u007E]*$'

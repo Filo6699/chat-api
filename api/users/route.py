@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic.types import UUID
 
 from .service import UserService
-from .model import User, UserPost, UserResponse, UserPostResponce
+from .model import User, UserPost, UserResponse, UserPostResponse
 from api.utils import get_current_user
 from api.database import get_session
 
@@ -51,9 +51,9 @@ async def get_user(
 
 @router.post(
     "/users",
-    response_model=UserPostResponce,
+    response_model=UserPostResponse,
     status_code=status.HTTP_201_CREATED,
-    tags=["users"],
+    tags=["users", "authorization"],
 )
 async def create_user(
     user: UserPost,
