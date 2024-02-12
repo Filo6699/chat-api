@@ -41,7 +41,7 @@ class UserService:
         new_user = User(
             username=user.username,
             password_hash=password_hash,
-            admin=True,
+            admin=False,
         )
         session.add(new_user)
         await session.commit()
