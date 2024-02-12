@@ -39,7 +39,7 @@ async def get_messages(
 )
 async def get_message(
     chat_id: UUID,
-    message_id: UUID,
+    message_id: int,
     session: AsyncSession = Depends(get_session),
 ):
     try:
@@ -81,7 +81,7 @@ async def create_message(
 )
 async def delete_message(
     chat_id: UUID,
-    message_id: UUID,
+    message_id: int,
     user: User = Depends(get_current_user),
     session: AsyncSession = Depends(get_session),
 ):
