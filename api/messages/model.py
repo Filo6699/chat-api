@@ -34,6 +34,7 @@ class MessageBase(BaseModel):
     content: str = Field(
         min_length=1,
         max_length=1024,
+        examples=["dead chat? xd lmao"],
     )
 
 
@@ -45,5 +46,7 @@ class MessageResponse(MessageBase):
     id: int
     chat_id: PUUID
     author_id: PUUID
-    author_username: str
+    author_username: str = Field(
+        examples=["ultra_nagibator3000"],
+    )
     created_date: datetime

@@ -29,25 +29,26 @@ class User(Base):
 
 
 class UserBase(BaseModel):
-    username: str
-
-
-class UserPost(UserBase):
     username: str = Field(
         min_length=2,
         max_length=32,
-        pattern=password_regex,
+        pattern=username_regex,
+        examples=["ultra_nagibator3000"],
     )
+
+
+class UserPost(UserBase):
     password: str = Field(
         min_length=4,
         max_length=32,
         pattern=password_regex,
+        examples=["password123"],
     )
 
 
 class UserPostResponse(UserBase):
     id: PUUID
-    token: str
+    token: str = Field(examples=["eyJhbGTiOiJIUzI1.eyJzdWIi.gnz-vjKL"])
     admin: bool
 
 

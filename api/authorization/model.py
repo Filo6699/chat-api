@@ -11,6 +11,7 @@ class AuthBase(BaseModel):
         min_length=2,
         max_length=32,
         pattern=username_regex,
+        examples=["ultra_nagibator3000"],
     )
 
 
@@ -19,11 +20,10 @@ class AuthPost(AuthBase):
         min_length=4,
         max_length=32,
         pattern=password_regex,
+        examples=["password123"],
     )
 
 
 class AuthResponse(AuthBase):
     user_id: UUID
     token: str
-
-from api.config import username_regex, password_regex
